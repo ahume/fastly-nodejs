@@ -1,0 +1,16 @@
+{
+	"name": "fastly",
+	"version": "0.0.1",
+	"description": "Work with the Fastly API in your node projects.",
+	"keywords": "fastly, cdn, api, caching, varnish",
+	"main": "lib/fastly.js",
+	"author": {
+		"name": "Andy Hume",
+		"email": "andyhume@gmail.com",
+		"url": "http://andyhume.net"
+	},
+	"dependencies": {
+
+	}
+
+}
