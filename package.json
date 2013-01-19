@@ -10,7 +10,7 @@
 		"url": "http://andyhume.net"
 	},
 	"dependencies": {
-
+		"nock": "0.14.x"
 	}
 
 }
