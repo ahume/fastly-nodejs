@@ -12,5 +12,4 @@
 	"dependencies": {
 		"nock": "0.14.x"
 	}
-
 }

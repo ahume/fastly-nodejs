@@ -1,8 +1,22 @@
 var nock   = require('nock');
 
 function createStubs() {
-	console.log('creating stubs');
-	var fastly_api = nock('https://api.fastly.com')
+
+	var goodAuthApi = nock('https://api.fastly.com').matchHeader('X-Fastly-Key', '6ea7c6ed310d436339bc6cfe92265f54')
+
+				// testBackendHealthCheck
+				.get('/service/oOW2G2kwDaaXJVNaaPgpx/version/1/backend/check_all')
+				.reply(200, [{
+						'backend': {
+							'hostname': 'andyhume.net.s3-website-us-east-1.amazonaws.com'
+						},
+						'healthcheck': {
+							'url': 'http://andyhume.net.s3-website-us-east-1.amazonaws.com:80/'
+						},
+						'status': 'success'
+					}
+				])
+
 				// testGetBackends
                 .get('/service/oOW2G2kwDaaXJVNaaPgpx/version/1')
                 .reply(200, {'number': 1, 'locked': true})
@@ -22,6 +36,10 @@ function createStubs() {
                 		}
                 	}
                	})
+
+                // testPurgeUrl
+               	.intercept('/about/', 'PURGE')
+               	.reply(200, {'status': 'ok'})
 
                 ;
 }
